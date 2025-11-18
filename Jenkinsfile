@@ -6,9 +6,9 @@ pipeline {
         }
     }
 
-    environment {
-        CYPRESS_INSTALL_BINARY = "0"   // Empêche le téléchargement du binaire Cypress
-    }
+    // environment {
+    //     CYPRESS_INSTALL_BINARY = "0"   // Empêche le téléchargement du binaire Cypress
+    // }
 
     stages {
 
