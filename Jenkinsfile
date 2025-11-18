@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'cypress/browsers:latest'
+            image 'cypress/included:13.6.6'
             args '--user=root --entrypoint='
         }
     }
