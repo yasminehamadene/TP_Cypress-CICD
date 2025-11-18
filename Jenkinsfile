@@ -2,7 +2,7 @@ pipeline {
    agent {
         docker {
             // CORRECTION: Retirer le 'c' supplémentaire
-            image 'cypress/base:20' 
+            image 'cypress/base:20.11.1' 
             args '--entrypoint ""'
         }
     }
