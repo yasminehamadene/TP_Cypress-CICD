@@ -17,6 +17,7 @@ stage('Run cypress'){
         //sh './batchs/e2etests.sh'
         //sh './batchs/e2etests.sh'
         sh 'npx cypress run'
+        //test de reports
     }
 }
 stage ('generer report') {
