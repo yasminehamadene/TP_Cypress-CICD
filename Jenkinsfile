@@ -1,5 +1,10 @@
 pipeline {
    agent {
+    environment {
+        // AJOUTER CECI si vous êtes derrière un proxy
+        http_proxy = 'http://USER:PASSWORD@HOST:PORT'
+        https_proxy = 'http://USER:PASSWORD@HOST:PORT'
+    }
         docker {
             // CORRECTION: Retirer le 'c' supplémentaire
             image 'cypress/base:22.3.0' 
