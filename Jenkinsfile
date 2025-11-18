@@ -1,26 +1,35 @@
 pipeline {
-   agent {
-    
+    agent {
         docker {
-            // CORRECTION: Retirer le 'c' supplémentaire
-            image 'cypress/base:22.3.0' 
-           args '--entrypoint ""'
+            image 'cypress/browsers:latest'
+            args '--user=root --entrypoint='
         }
     }
-    
+
+    environment {
+        CYPRESS_INSTALL_BINARY = "0"   // Empêche le téléchargement du binaire Cypress
+    }
 
     stages {
+
+        stage('Verify dependencies') {
+            steps {
+                sh 'node -v && npm -v'
+            }
+        }
+
         stage('Install dependencies') {
-          steps{
-            sh 'CYPRESS_INSTALL_BINARY=0 npm install'
-    }
+            steps {
+                sh 'npm ci'
+            }
         }
 
         stage('Run tests') {
             steps {
-                sh 'batchs/e2e_test.sh'
+                sh 'npx cypress run'
+                // ou si tu veux utiliser ton script:
+                // sh './cypress/e2e/batchs/login.sh'
             }
         }
     }
 }
-
